@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { TableComponent } from './table/table.component';
+import { CurrencyComponent } from './currency/currency.component';
+import { QueryFilterPipe } from './query-filter.pipe';
 
 @NgModule({
   imports: [
@@ -20,6 +23,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
   declarations: [
     AppComponent,
     DashboardComponent,
+    TableComponent,
+    CurrencyComponent,
+    QueryFilterPipe,
   ],
   bootstrap: [AppComponent]
 })

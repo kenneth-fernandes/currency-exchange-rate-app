@@ -1,0 +1,14 @@
+<h3>
+    Currency conversion
+</h3>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{baseCurrency}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <input type="text" class="form-control" placeholder="Query" [(ngModel)]="query">
+        <button class="dropdown-item" type="button" *ngFor="let item of itemsArr | queryFilter: query"
+            (click)=changeMenu(item.currency)>{{item.currency}}</button>
+    </div>
+</div>
+<app-table [itemsArr]="itemsArr"></app-table>
