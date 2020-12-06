@@ -9,7 +9,6 @@ import { CurrencyAPIService } from '../service/currencydata.service';
 
 export class TableComponent implements OnInit {
   @Input() itemsArr = [];
-  ItemsArray = [];
 
   constructor(private restApiService: CurrencyAPIService) { }
 
