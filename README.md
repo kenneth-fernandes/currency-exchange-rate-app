@@ -1,1 +1,1 @@
-# currency-exchange-rate-app
+# angular-tour-of-heroes
