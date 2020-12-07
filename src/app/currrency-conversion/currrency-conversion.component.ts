@@ -12,7 +12,7 @@ export class CurrrencyConversionComponent implements OnInit {
   currencyRateData: number[] = [];
   datesArr: string[] = [];
 
-  count: number = 50;
+  count: number = 20;
 
   query: string = "";
   fromDateStr: string = "";
