@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CurrencyAPIService } from '../service/currencydata.service';
+import { CurrencyFlagsService } from '../service/currenc-flags/currency-flags.service';
 
 @Component({
   selector: 'app-table',
@@ -10,9 +11,14 @@ import { CurrencyAPIService } from '../service/currencydata.service';
 export class TableComponent implements OnInit {
   @Input() itemsArr = [];
 
-  constructor(private restApiService: CurrencyAPIService) { }
+  service: CurrencyFlagsService;
+  constructor(private restApiService: CurrencyAPIService, private serviceIn: CurrencyFlagsService) {
+    this.service = serviceIn;
+
+  }
 
   ngOnInit() {
+
   }
 
 }

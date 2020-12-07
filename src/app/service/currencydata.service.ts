@@ -26,8 +26,18 @@ export class CurrencyAPIService {
     return this.httpClient.get<Object>(this.awsCurrencyApi + '/prod/currency?base=' + baseCurrency);
   }
 
-  getHistDataByCurrencyBase(baseCUrrency: string, requestedCurrency: string, dateStr: string): Observable<Object> {
+  getDataByCurrencyBaseAndDate(baseCUrrency: string, requestedCurrency: string, dateStr: string): Observable<Object> {
     return this.httpClient.get<Object>(this.api + '/' + dateStr + '?base=' + baseCUrrency + '&symbols=' + requestedCurrency);
   }
+
+  getHistDataByCurrencyBase(baseCurrency: string, startDate: string, endDate: string): Observable<Object> {
+    console.log(this.awsCurrencyApi + '/prod/currencyhistory?start_date=' + startDate + '&end_date=' + endDate + '&base=' + baseCurrency);
+    return this.httpClient.get<Object>(this.awsCurrencyApi + '/prod/currencyhistory?start_date=' + startDate + '&end_date=' + endDate + '&base=' + baseCurrency);
+  }
+
+  getHistData(startDate: string, endDate: string): Observable<Object> {
+    return this.httpClient.get<Object>(this.awsCurrencyApi + '/prod/currencyhistory?start_date=' + startDate + '&end_date=' + endDate);
+  }
+
 
 }

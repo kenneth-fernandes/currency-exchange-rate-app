@@ -1,15 +1,21 @@
-<h3>
-    Currency conversion
-</h3>
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{baseCurrency}}
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <input type="text" class="form-control" placeholder="Query" [(ngModel)]="query">
-        <button class="dropdown-item" type="button" *ngFor="let item of itemsArr | queryFilter: query"
-            (click)=changeMenu(item.currency)>{{item.currency}}</button>
+<div class="container currency-elements">
+    <h2 class="currency-heading">
+        Currency list
+    </h2>
+    <div class="dropdown">
+        <label class="currency-label">Base currency : </label>
+        <button class="btn btn-secondary dropdown-toggle" style="background-color: #004191;" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{baseCurrency}} &nbsp; <img [src]="service.getFlagURL(baseCurrency)" class="mr-2" style="width: 20px">
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <input type="text" class="form-control" placeholder="Query" [(ngModel)]="query">
+            <button class="dropdown-item" type="button" *ngFor="let item of itemsArr | queryFilter: query"
+                (click)=changeMenu(item.currency)><label>{{item.currency}} </label>
+                <img [src]="service.getFlagURL(item.currency)" class="mr-2"
+                    style="margin-left: 20px;width: 20px; border: 0.1px solid black;"> </button>
+        </div>
     </div>
+    <app-table [itemsArr]="itemsArr"></app-table>
+    <!-- <app-line-chart [currencyRateData]="currencyRateData" [datesArr]="datesArr"></app-line-chart> -->
 </div>
-<app-table [itemsArr]="itemsArr"></app-table>
-<app-line-chart [currencyRateData]="currencyRateData" [datesArr]="datesArr"></app-line-chart>
