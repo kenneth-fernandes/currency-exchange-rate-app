@@ -10,6 +10,7 @@ export class CurrencyAPIService {
 
   private api = "https://api.exchangeratesapi.io";
   private awsCurrencyApi = "https://m0xf3a11qg.execute-api.us-west-2.amazonaws.com";
+  private awsCryptoApi = "https://mggua01lo3.execute-api.us-west-2.amazonaws.com";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -37,6 +38,10 @@ export class CurrencyAPIService {
 
   getHistData(startDate: string, endDate: string): Observable<Object> {
     return this.httpClient.get<Object>(this.awsCurrencyApi + '/prod/currencyhistory?start_date=' + startDate + '&end_date=' + endDate);
+  }
+
+  getCryptoData(base: string) {
+    return this.httpClient.get<Object>(this.awsCryptoApi + '/prod/cryptocurrency?Target=' + base);
   }
 
 

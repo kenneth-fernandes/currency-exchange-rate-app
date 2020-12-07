@@ -9,10 +9,11 @@ import { CurrencyFlagsService } from '../service/currenc-flags/currency-flags.se
 })
 export class CurrencyComponent implements OnInit {
   itemsArr = [];
+  itemsArrCrypto = []
   dropDownArr = [];
 
   baseCurrency: string = "USD";
-
+  baseCurrencyForCrypto = "USD";
   query: string = "";
   dateObj: Date = new Date();
   dateStr: string = "";
@@ -46,19 +47,22 @@ export class CurrencyComponent implements OnInit {
           rate: ratesObj[property]['N']
         });
       }
-      // for (let i = this.count; i > 0; i -= 1) {
-      //   this.dateObj = new Date();
-      //   this.dateObj.setUTCDate(this.dateObj.getUTCDate() - (30 * i));
-      //   this.dateStr = this.dateObj.getUTCFullYear() + "-" + this.dateObj.getUTCMonth() + "-" + this.dateObj.getUTCDay();
-      //   console.log(this.baseCurrency);
-      //   this.restApiService.getDataByCurrencyBaseAndDate(this.baseCurrency, "USD", this.dateStr).subscribe((result: Object) => {
-
-      //     this.currencyRateData.push(result['rates']['USD']);
-      //     this.datesArr.push(result['date']);
-      //   });
-
-      // }
     });
+    this.restApiService.getCryptoData(this.baseCurrencyForCrypto).subscribe((result: Object) => {
+
+      const ratesObj = result['Item']['rates']['M'];
+      //this.baseCurrency = result['Item']['base']['S'];
+
+      for (const property in ratesObj) {
+        // this.dropDownArr.push(property);
+        this.itemsArrCrypto.push({
+          currency: property,
+          rate: ratesObj[property]['N']
+        });
+      }
+    });
+
+
 
   }
 
