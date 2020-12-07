@@ -11,6 +11,7 @@ import { CurrencyAPIService } from '../service/currencydata.service';
 export class LineChartComponent implements OnInit, OnChanges {
   @Input() currencyRateData: number[] = [];
   @Input() datesArr: string[] = [];
+  @Input() targetCurrency: string;
   dateObj: Date = new Date();
   dateStr: string;
 
@@ -30,7 +31,7 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.lineChartData = [
-      { data: this.currencyRateData, label: 'Currency' },
+      { data: this.currencyRateData, label: 'Target Currency : ' + this.targetCurrency },
     ];
     this.lineChartLabels = this.datesArr;
 
@@ -55,7 +56,7 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.lineChartData = [
-      { data: this.currencyRateData, label: 'Currency' },
+      { data: this.currencyRateData, label: 'Target Currency : ' + this.targetCurrency },
     ];
     this.lineChartLabels = this.datesArr;
 
