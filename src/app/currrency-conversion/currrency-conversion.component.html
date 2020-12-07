@@ -1,3 +1,54 @@
 <div class="container currency-elements">
+    <div class="currency-coversion-section">
+        <h2 class="currency-heading">
+            Currency conversion
+        </h2>
+        <div class="form-row input-section">
+            <div class="form-group col-md-4">
+                <div class="dropdown">
+                    <label class="currency-label">Base currency : </label>
+                    <button class="btn btn-secondary dropdown-toggle" style="background-color: #004191;"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{baseCurrency}} &nbsp; <img [src]="service.getFlagURL(baseCurrency)" class="mr-2"
+                            style="width: 20px">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <input type="text" class="form-control" placeholder="Query" [(ngModel)]="query">
+                        <button class="dropdown-item" type="button" *ngFor="let item of itemsArr | queryFilter: query"
+                            (click)=changeBaseMenu(item.currency)><label>{{item.currency}} </label>
+                            <img [src]="service.getFlagURL(item.currency)" class="mr-2"
+                                style="margin-left: 20px;width: 20px; border: 0.1px solid black;"> </button>
+                    </div>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="baseCurrencyAmount"
+                    (keyup)="onBaseKeyPress($event)">
+            </div>
+            <div class="form-group col-md-4">
+                <div class="dropdown">
+                    <label class="currency-label">Target currency : </label>
+                    <button class="btn btn-secondary dropdown-toggle" style="background-color: #004191;"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{targetCurrency}} &nbsp; <img [src]="service.getFlagURL(targetCurrency)" class="mr-2"
+                            style="width: 20px">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <input type="text" class="form-control" placeholder="Query" [(ngModel)]="query">
+                        <button class="dropdown-item" type="button" *ngFor="let item of itemsArr | queryFilter: query"
+                            (click)=changeTargetMenu(item.currency)><label>{{item.currency}} </label>
+                            <img [src]="service.getFlagURL(item.currency)" class="mr-2"
+                                style="margin-left: 20px;width: 20px; border: 0.1px solid black;"> </button>
+                    </div>
+                </div>
+                <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="targetCurrencyAmount"
+                    (keyup)="onTargetKeyPress($event)" disabled>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="currency-label num-of-days-label">No. of Days : </label>
+                <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="count">
+            </div>
+        </div>
+        <!-- <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm"> -->
+    </div>
+
     <app-line-chart [currencyRateData]="currencyRateData" [datesArr]="datesArr"></app-line-chart>
 </div>

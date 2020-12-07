@@ -78,26 +78,6 @@ export class CurrencyComponent implements OnInit {
           rate: ratesObj[property]['N']
         });
       }
-
-      for (let i = this.count; i > 0; i -= 1) {
-        this.dateObj = new Date();
-        this.dateObj.setUTCDate(this.dateObj.getUTCDate() - (30 * i));
-        this.dateStr = this.dateObj.getUTCFullYear() + "-" + this.dateObj.getUTCMonth() + "-" + this.dateObj.getUTCDay();
-
-        this.restApiService.getDataByCurrencyBaseAndDate(this.baseCurrency, "USD", this.dateStr).subscribe((result: Object) => {
-
-          if (this.count === this.currencyRateData.length && this.count === this.datesArr.length) {
-            console.log(this.currencyRateData.length, this.datesArr.length);
-            this.currencyRateData = [];
-            this.datesArr = [];
-
-          }
-          this.currencyRateData.push(result['rates']['USD']);
-          this.datesArr.push(result['date']);
-        });
-
-      }
-
       this.query = "";
     });
   }
