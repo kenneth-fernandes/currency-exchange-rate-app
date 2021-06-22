@@ -1,6 +1,6 @@
 # CS-580k: Cloud Computing - Project - Web Application
 
-# Name: Kenneth Peter Fernandes
+# Name: Kenneth Peter Fernandes, Rohit Mahendra Dhuri
 
 
 # Description:
